@@ -1,32 +1,26 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.shortcuts import redirect
+import myproject.utils.funcs_bag as funcs_bag
 
-#Create your views here.
 def homePageView(request):
-  return HttpResponse("Hello! It's a test app which processes user input based on functions chosen and renders output")
+  if request.method == 'GET':
+    return render(request, 'home.html', {})
+  elif request.method == 'POST': 	
+    return redirect('demo')   # urls.py => name = 'demo'
 
-def index(request):	
-  print("====  =====  =====  =====",  "  ", request)
-
+def demoView(request):	
   if request.method == 'GET':	
-    print("=================================== GET")
     return render(request, 'my_form.html', {})
 
-  if request.method == 'POST' and request.POST['submit'] == 'submit': 
-    print("=================================== POST")
+  elif request.method == 'POST' and request.POST['submit'] == 'submit': 
     dict = request.POST
-    print(request)
-    print(request.POST)
-   
-    # import sys
-    # print(sys.path)
     fact_input = dict['factorial']
     fibo_input = dict['fibonacci']    
     arms_input = dict['armstrong']
     palin_input = dict['palindrome'] 
 
-    import myproject.utils.funcs_bag as funcs_bag
     if fact_input != '':
       fact_input = int(fact_input)
       result_fact = funcs_bag.fact(fact_input)
@@ -51,12 +45,9 @@ def index(request):
     else:
       result_palin = ''                
     mydict = {'fact_in': fact_input, 'r_fact': result_fact, 'r_fibo': result_fibo, 'r_arms': result_arms, 'r_palin': result_palin}
-    
-    print(type(mydict), "   values:   ", result_fact,"    ", result_fibo, "    ",  result_arms, "    ",  result_palin)
     return render(request, 'display.html', {'mydict': mydict}) 
 
-  if request.method == 'POST' and request.POST['submit'] == 'back': 
-  	print("================================ POST for BACK")
+  elif request.method == 'POST' and request.POST['submit'] == 'back': 
   	return render(request, 'my_form.html', {})
 
 
