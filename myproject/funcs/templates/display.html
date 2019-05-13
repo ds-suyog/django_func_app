@@ -3,21 +3,18 @@
       <form method = "POST">
       {% csrf_token %}    
         <h4>Displaying Result </h4>
-        <p>{{ mydict }}</p>
-        <p>{{ mydict.fact_in }}</p>        
-
 		    {% if fact_in != '' %}
-          <p>factorial  : factorial of {{mydict.fact_in}} is : {{ mydict. r_fact }} </p>
+          <p>factorial  : factorial of {{mydict.fact_in}} is : {{ mydict.r_fact }} </p>
 		    {% endif %}      	 
-<!-- 		    {% if r_fibo != '' %}
-          <p>fibonacci  : series, {{ r_fibo }}</p>
+		    {% if r_fibo != '' %}
+          <p>fibonacci  : series, {{ mydict.r_fibo }}</p>
 		    {% endif %}  
 		    {% if r_arms != '' %}
-          <p>armstrong  : {{ r_arms }}</p>
+          <p>armstrong  : {{ mydict.r_arms }}</p>
 		    {% endif %}  
 		    {% if r_palin != '' %}
-          <p>palindrome : {{ r_palin }}</p>  
-		    {% endif %}  --> 				
+          <p>palindrome : {{ mydict.r_palin }}</p>  
+		    {% endif %}  				
         <p><input type = "submit" name = "submit" value = "back">	
       </form>
    </body>
