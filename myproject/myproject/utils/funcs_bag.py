@@ -58,19 +58,3 @@ def ispalin(input):
     return "%s is palindrome" % (input)
   else:
     return "%s is not palindrome" % (input)
-
-def guddu():
-  import re
-  name_list = ["kamlesh", "Ramesh", "Suresh", "Gita esh", "esh isha", "esh"] 
-  print("original_set: %s" % (str(name_list)))
-  name_list = [x for x in name_list if len(re.findall(r'^esh$' , x)) == 0]
-  #name_list = filter(lambda x: len(re.findall(r'^esh$' , x)) == 0, name_list)
-  print("filtered:     %s" % (str(name_list)))
-
-
-  
-def main():
-    print("in main")
-    #do stuff
-
-main()
