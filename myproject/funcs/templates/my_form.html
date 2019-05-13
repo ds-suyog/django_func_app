@@ -1,0 +1,13 @@
+<html>
+   <body>
+      <form method = "POST">
+      {% csrf_token %}	
+         <h4>Feed input to get corresponding response </h4>
+         <hr>
+         <p>factorial of number  .<input type = "text" name = "factorial" /></p>
+         <p>fibonacci of n numbers<input type = "text" name = "fibonacci" /></p>
+         <p>is number armstrong? .<input type = "text" name = "armstrong" /></p>
+         <p>is input palindrome? .<input type ="text" name = "palindrome" /></p>
+         <p><input type = "submit" name="submit" value = "submit">         
+      </form>
+   </body>
