@@ -14,6 +14,7 @@ def demoView(request):
   if request.method == 'GET':	
     from templates.forms import NameForm    
     form = NameForm()
+    return render(request, 'name.html', {'form': form})
     #return render(request, 'my_form.html', {})
 
   elif request.method == 'POST' and request.POST['submit'] == 'submit': 
