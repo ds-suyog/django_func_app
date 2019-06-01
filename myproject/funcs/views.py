@@ -12,9 +12,9 @@ def homePageView(request):
 
 def demoView(request):	
   if request.method == 'GET':	
-    from templates.forms import NameForm    
-    form = NameForm()
-    return render(request, 'name.html', {'form': form})
+    from .templates.input_form import InputForm    
+    form = InputForm()
+    return render(request, 'my_form2.html', {'form': form})
     #return render(request, 'my_form.html', {})
 
   elif request.method == 'POST' and request.POST['submit'] == 'submit': 
