@@ -12,7 +12,9 @@ def homePageView(request):
 
 def demoView(request):	
   if request.method == 'GET':	
-    return render(request, 'my_form.html', {})
+    from templates.forms import NameForm    
+    form = NameForm()
+    #return render(request, 'my_form.html', {})
 
   elif request.method == 'POST' and request.POST['submit'] == 'submit': 
     dict = request.POST
