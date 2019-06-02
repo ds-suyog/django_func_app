@@ -10,12 +10,9 @@ def homePageView(request):
   elif request.method == 'POST': 	
     return redirect('demo')   # urls.py => name = 'demo'
 
-def demoView(request):	
+def demoView(request):
   if request.method == 'GET':	
-    from .templates.input_form import InputForm    
-    form = InputForm()
-    return render(request, 'my_form2.html', {'form': form})
-    #return render(request, 'my_form.html', {})
+    return render(request, 'my_form.html', {})
 
   elif request.method == 'POST' and request.POST['submit'] == 'submit': 
     dict = request.POST
