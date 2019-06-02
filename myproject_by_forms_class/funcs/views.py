@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
 import myproject.utils.funcs_bag as funcs_bag
-from .templates.input_form import InputForm 
+from .templates.forms import InputForm 
 
 def homePageView(request):
   if request.method == 'GET':
