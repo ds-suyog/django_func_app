@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
 import myproject.utils.funcs_bag as funcs_bag
-from .templates.input_form import InputForm 
 
 from .models import UserInput
 from .templates.forms import InputForm 
@@ -22,11 +21,17 @@ def demoView(request):
   if request.method == 'POST' and 'submit' not in request.POST:
     form = InputForm(request.POST)    
     if form.is_valid(): 
-      #print("===    ===", form.cleaned_data)
+      print("===    ===", form.cleaned_data)
       fact_input = form.cleaned_data['factorial']
       fibo_input = form.cleaned_data['fibonacci']    
       arms_input = form.cleaned_data['armstrong']
       palin_input = form.cleaned_data['palindrome'] 
+
+      p = UserInput(factorial=fact_input, 
+        fibonacci=fibo_input, 
+        armstrong=arms_input, 
+        palindrome=palin_input)
+      p.save()
 
       if fact_input != '':
         fact_input = int(fact_input)
