@@ -4,7 +4,6 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 import myproject.utils.funcs_bag as funcs_bag
 
-from .models import UserInput
 from .templates.forms import InputForm 
 
 def homePageView(request):
@@ -21,17 +20,23 @@ def demoView(request):
   if request.method == 'POST' and 'submit' not in request.POST:
     form = InputForm(request.POST)    
     if form.is_valid(): 
-      print("===    ===", form.cleaned_data)
       fact_input = form.cleaned_data['factorial']
       fibo_input = form.cleaned_data['fibonacci']    
       arms_input = form.cleaned_data['armstrong']
       palin_input = form.cleaned_data['palindrome'] 
 
-      p = UserInput(factorial=fact_input, 
+      # method 1
+      from .models import UserInput
+      user_input = UserInput(factorial=fact_input, 
         fibonacci=fibo_input, 
         armstrong=arms_input, 
         palindrome=palin_input)
-      p.save()
+      user_input.save()
+
+      # method 2: by using ModelForm
+      from .templates.forms import InputForm2
+      form2 = InputForm2(request.POST)
+      form2.save()
 
       if fact_input != '':
         fact_input = int(fact_input)

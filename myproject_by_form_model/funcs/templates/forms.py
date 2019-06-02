@@ -1,10 +1,10 @@
 
 from django.forms import ModelForm
-
-# class InputForm(ModelForm):
-#     class Meta:
-#         model = UserInput
-#         fields = ['factorial', 'fibonacci', 'armstrong', 'palindrome']
+from ..models import UserInput
+class InputForm2(ModelForm):
+    class Meta:
+        model = UserInput
+        fields = ['factorial', 'fibonacci', 'armstrong', 'palindrome']
 
 from django import forms
 class InputForm(forms.Form):
