@@ -1,4 +1,4 @@
-django>=2.2.3
+django>=2.2.4
 mysqlclient==1.4.2.post1
 pkg-resources==0.0.0
 pytz==2019.1
